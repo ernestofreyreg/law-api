@@ -38,6 +38,13 @@ router
       param("matterId").isUUID().withMessage("Invalid matter ID"),
     ],
     matterController.getMatterById
+  )
+  .put(
+    [
+      param("customerId").isUUID().withMessage("Invalid customer ID"),
+      param("matterId").isUUID().withMessage("Invalid matter ID"),
+    ],
+    matterController.updateMatter
   );
 
 export default router;
