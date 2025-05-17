@@ -5,5 +5,17 @@
     "database": "law_firm_db",
     "host": "127.0.0.1",
     "dialect": "postgres"
+  },
+  "production": {
+    "username": "neondb_owner",
+    "password": "",
+    "database": "neondb",
+    "host": "ep-mute-mouse-a4qxtigo-pooler.us-east-1.aws.neon.tech",
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "rejectUnauthorized": false
+      }
+    }
   }
 }
