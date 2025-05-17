@@ -19,7 +19,7 @@ cd law-practice/api
 2. Start the services using Docker Compose:
 
 ```bash
-docker-compose up -d
+$ docker-compose up -d
 ```
 
 This will start:
@@ -28,6 +28,14 @@ This will start:
 - API server on port 3000
 
 3. The API will be available at `http://localhost:3000`
+
+4. To seed the database with a demo user do:
+
+```
+$ npx sequelize-cli db:seed:all
+```
+
+A user with email: `test@test.com` and password: `12345678` will be created.
 
 ## API Routes
 
