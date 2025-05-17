@@ -6,9 +6,10 @@ import authConfig from "../config/auth";
 import { UserRequest } from "../types";
 
 // Generate JWT token
-const generateToken = (id: number): string => {
+const generateToken = (id: string): string => {
   return jwt.sign({ id }, authConfig.jwtSecret, {
-    expiresIn: authConfig.jwtExpire,
+    // expiresIn: authConfig.jwtExpire,
+    algorithm: "HS256",
   });
 };
 

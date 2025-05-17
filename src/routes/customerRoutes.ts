@@ -29,12 +29,12 @@ router
 router
   .route("/:id")
   .get(
-    param("id").isNumeric().withMessage("Invalid customer ID"),
+    param("id").isUUID().withMessage("Invalid customer ID"),
     customerController.getCustomerById
   )
   .put(
     [
-      param("id").isNumeric().withMessage("Invalid customer ID"),
+      param("id").isUUID().withMessage("Invalid customer ID"),
       body("name").optional(),
       body("phoneNumber").optional(),
       body("email")
@@ -45,7 +45,7 @@ router
     customerController.updateCustomer
   )
   .delete(
-    param("id").isNumeric().withMessage("Invalid customer ID"),
+    param("id").isUUID().withMessage("Invalid customer ID"),
     customerController.deleteCustomer
   );
 

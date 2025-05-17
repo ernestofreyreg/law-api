@@ -3,14 +3,14 @@ import sequelize from "../config/database";
 import Customer from "./Customer";
 
 interface MatterAttributes {
-  id: number;
+  id: string;
   name: string;
   description: string;
   status: string;
   openDate: Date;
   closeDate?: Date;
   practiceArea: string;
-  customerId: number;
+  customerId: string;
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -22,14 +22,14 @@ class Matter
   extends Model<MatterAttributes, MatterCreationAttributes>
   implements MatterAttributes
 {
-  public id!: number;
+  public id!: string;
   public name!: string;
   public description!: string;
   public status!: string;
   public openDate!: Date;
   public closeDate?: Date;
   public practiceArea!: string;
-  public customerId!: number;
+  public customerId!: string;
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
 }
@@ -37,8 +37,8 @@ class Matter
 Matter.init(
   {
     id: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
     },
     name: {
@@ -50,8 +50,8 @@ Matter.init(
       allowNull: false,
     },
     status: {
-      type: DataTypes.ENUM("Open", "Closed", "Pending"),
-      defaultValue: "Open",
+      type: DataTypes.ENUM("open", "closed", "pending"),
+      defaultValue: "open",
     },
     openDate: {
       type: DataTypes.DATE,
@@ -66,7 +66,7 @@ Matter.init(
       allowNull: false,
     },
     customerId: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
       allowNull: false,
       references: {
         model: Customer,

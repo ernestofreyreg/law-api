@@ -11,12 +11,12 @@ router.use(protect);
 router
   .route("/")
   .get(
-    param("customerId").isNumeric().withMessage("Invalid customer ID"),
+    param("customerId").isUUID().withMessage("Invalid customer ID"),
     matterController.getMatters
   )
   .post(
     [
-      param("customerId").isNumeric().withMessage("Invalid customer ID"),
+      param("customerId").isUUID().withMessage("Invalid customer ID"),
       body("name").not().isEmpty().withMessage("Name is required"),
       body("description")
         .not()
@@ -34,8 +34,8 @@ router
   .route("/:matterId")
   .get(
     [
-      param("customerId").isNumeric().withMessage("Invalid customer ID"),
-      param("matterId").isNumeric().withMessage("Invalid matter ID"),
+      param("customerId").isUUID().withMessage("Invalid customer ID"),
+      param("matterId").isUUID().withMessage("Invalid matter ID"),
     ],
     matterController.getMatterById
   );

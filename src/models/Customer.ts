@@ -3,13 +3,13 @@ import sequelize from "../config/database";
 import User from "./User";
 
 interface CustomerAttributes {
-  id: number;
+  id: string;
   name: string;
   phoneNumber: string;
   email: string;
   address: string;
   notes: string;
-  userId: number;
+  userId: string;
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -21,13 +21,13 @@ class Customer
   extends Model<CustomerAttributes, CustomerCreationAttributes>
   implements CustomerAttributes
 {
-  public id!: number;
+  public id!: string;
   public name!: string;
   public phoneNumber!: string;
   public email!: string;
   public address!: string;
   public notes!: string;
-  public userId!: number;
+  public userId!: string;
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
 }
@@ -35,8 +35,8 @@ class Customer
 Customer.init(
   {
     id: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
     },
     name: {
@@ -63,7 +63,7 @@ Customer.init(
       allowNull: true,
     },
     userId: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
       allowNull: false,
       references: {
         model: User,
