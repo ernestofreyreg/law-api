@@ -25,9 +25,9 @@ $ docker-compose up -d
 This will start:
 
 - PostgreSQL database on port 5432
-- API server on port 3000
+- API server on port 3001
 
-3. The API will be available at `http://localhost:3000`
+3. The API will be available at `http://localhost:3001`
 
 4. To seed the database with a demo user do:
 
@@ -36,6 +36,7 @@ $ npx sequelize-cli db:seed:all
 ```
 
 A user with email: `test@test.com` and password: `12345678` will be created.
+You can also signup from the UI the first time time.
 
 ## API Routes
 
@@ -138,7 +139,7 @@ A user with email: `test@test.com` and password: `12345678` will be created.
 The following environment variables are configured in the Docker Compose file:
 
 - `NODE_ENV`: Development environment
-- `PORT`: API server port (3000)
+- `PORT`: API server port (3001)
 - `JWT_SECRET`: Secret for JWT token generation
 - `JWT_EXPIRE`: JWT token expiration time (30d)
 - `DB_HOST`: PostgreSQL host
