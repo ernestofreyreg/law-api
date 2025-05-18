@@ -15,7 +15,7 @@ COPY . .
 RUN npm run build
 
 # Expose API port
-EXPOSE 3000
+EXPOSE 3001
 
 # Start command
 CMD ["npm", "start"]
