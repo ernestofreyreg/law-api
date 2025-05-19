@@ -38,6 +38,81 @@ $ npx sequelize-cli db:seed:all
 A user with email: `test@test.com` and password: `12345678` will be created.
 You can also signup from the UI the first time time.
 
+## Local development
+
+Install dependencies:
+
+```bash
+# Install pnpm if you haven't already
+npm install -g pnpm
+
+# Install project dependencies
+pnpm install
+
+# Start the development server
+pnpm dev
+```
+
+The development server will start on port 3001 with hot-reloading enabled.
+
+## Testing
+
+The project uses Jest as the testing framework. Tests are located in the `tests` directory and follow the same structure as the source code.
+
+### Running Tests
+
+To run all tests:
+
+```bash
+pnpm test
+```
+
+To run tests in watch mode (useful during development):
+
+```bash
+pnpm test -- --watch
+```
+
+To run a specific test file:
+
+```bash
+pnpm test -- tests/controllers/authController.test.ts
+```
+
+### Test Structure
+
+- `tests/setup.ts`: Contains test setup and mock utilities
+- `tests/controllers/`: Tests for API controllers
+- `tests/middleware/`: Tests for middleware functions
+
+### Writing Tests
+
+When writing new tests:
+
+1. Create a new test file in the appropriate directory under `tests/`
+2. Use the mock utilities from `tests/setup.ts`
+3. Follow the existing test patterns
+4. Make sure to mock external dependencies (database, JWT, etc.)
+
+Example test structure:
+
+```typescript
+describe("Feature", () => {
+  let req: any;
+  let res: any;
+
+  beforeEach(() => {
+    req = mockRequest();
+    res = mockResponse();
+    jest.clearAllMocks();
+  });
+
+  it("should do something", async () => {
+    // Test implementation
+  });
+});
+```
+
 ## API Routes
 
 ### Authentication
